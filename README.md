@@ -16,7 +16,7 @@ The whole idea revolves around the fact that a boot wim image can be used as a m
 ![Pasted image 20230529103646](https://github.com/Filip3Kx/WDS-Linux/assets/114138650/3a56397f-bcb2-4546-bb38-5de0b1463f47)
 
 ## Syslinux
-All needed files are in the syslx directory of the repo. But if you want to use versions other than `6.03` here's what you'll need and where to find it:
+All needed files are in the [syslx](https://github.com/Filip3Kx/WDS-Linux/tree/main/syslx) directory of the repo. But if you want to use versions other than `6.03` here's what you'll need and where to find it:
 - syslinux-6.03\bios\core\pxelinux.0
 - syslinux-6.03\bios\com32\menu\vesamenu.c32
 - syslinux-6.03\bios\com32\chain\chain.c32
@@ -43,7 +43,7 @@ After you've configured all of the services listed above we can start by replaci
 5. Make a copy of `abortpxe.com` and call it `abortpxe.0`
 6. Create folder called `Linux`
 
-You can place the `menu_ws` file in the `pxelinux.cfg` directory and rename the file to `default`. **This is a sample menu that we will use for testing out windows installations (it doesn't have any linux menu entries).**
+You can place the [menu_ws](https://github.com/Filip3Kx/WDS-Linux/tree/main/menu_ws) file in the `pxelinux.cfg` directory and rename the file to `default`. **This is a sample menu that we will use for testing out windows installations (it doesn't have any linux menu entries).**
 
 Now we can point the WDS to new boot files using these commands
 ```
@@ -52,7 +52,7 @@ wdsutil /set-server /N12bootprogram:boot\x64\pxelinux.com /architecture:x64
 ```
 
 ## Windows installation setup
-Open your Windows iso with some archiving tool. For example 7zip.
+Open your Windows iso with some archiving tool. For example [7zip](https://www.7-zip.org/).
 
 After you've opened the Iso we will need 2 files
 - sources/install.wim
@@ -67,8 +67,7 @@ In the WDS configuration tool we can point to these 2 files as our install image
 ![Pasted image 20230529103430](https://github.com/Filip3Kx/WDS-Linux/assets/114138650/d4e69197-8bdc-420b-bb54-2e42088b05d5)
 
 ## Linux installation setup
-In the directory `.../boot/x64/Linux` we've made earlier we will make a subdirectory for every ISO we want to install and then point to it using the `default` menu file. For example i want to install Ubuntu so the path will looke like this `.../boot/x64/Linux/Ubuntu`.
-Now you can open the linux iso using 7zip and extract all it's files into this path.
+In the directory `.../boot/x64/Linux` we've made earlier we will make a subdirectory for every ISO we want to install and then point to it using the `default` menu file. For example i want to install Ubuntu so the path will looke like this `.../boot/x64/Linux/Ubuntu`. Now you can open the linux iso using [7zip](https://www.7-zip.org/) and extract all it's files into this path.
 
 After that is done we will need to configure our folder to be an NFS share that will serve all the installation files.
 
@@ -79,7 +78,7 @@ Be sure to remember about the filesystem permissions as well because they overri
 
 ![Pasted image 20230529103957](https://github.com/Filip3Kx/WDS-Linux/assets/114138650/eb7155c3-4468-4783-962d-505c54dbd8b2)
 
-With that you can replace the previous menu file in `pxelinux.cfg/default` with menu_lx. **Remember to rename it do default and be sure to open it and change the values for your configuration**
+With that you can replace the previous menu file in `pxelinux.cfg/default` with [menu_lx](https://github.com/Filip3Kx/WDS-Linux/tree/main/menu_lx). **Remember to rename it do default and be sure to open it and change the values for your configuration**
 
 ## Testing Linux Installation
 ![Pasted image 20230529104057](https://github.com/Filip3Kx/WDS-Linux/assets/114138650/64a960ca-91ad-4e2c-9bc6-cdadcf43bb78)
