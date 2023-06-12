@@ -1,0 +1,34 @@
+ DEFAULT      vesamenu.c32
+ PROMPT       0
+ NOESCAPE     0
+ ALLOWOPTIONS 0
+ # Timeout in units of 1/10 s
+ TIMEOUT 300
+ MENU MARGIN 10
+ MENU ROWS 16
+ MENU TABMSGROW 21
+ MENU TIMEOUTROW 26
+ MENU COLOR BORDER 30;44        #20ffffff #00000000 none
+ MENU COLOR SCROLLBAR 30;44        #20ffffff #00000000 none
+ MENU COLOR TITLE 0         #ffffffff #00000000 none
+ MENU COLOR SEL   30;47        #40000000 #20ffffff
+ MENU TITLE PXE Boot Menu
+ #---
+ LABEL wds
+ MENU LABEL ^Windows Deployment Services
+ KERNEL pxeboot.0
+ #---
+ LABEL Abort
+ MENU LABEL ^AbortPXE
+ Kernel    abortpxe.0
+ #---
+ LABEL local 
+ MENU DEFAULT
+ MENU LABEL B^oot from Harddisk
+ LOCALBOOT 0
+ Type 0x80
+ #---
+ Label Ubuntu
+ menu label Ubuntu Install
+ kernel /Linux/Ubuntu/casper/vmlinuz
+ APPEND boot=casper ip=dhcp netboot=nfs nfsroot=192.168.1.5:/Ubuntu initrd=/Linux/Ubuntu/casper/initrd
